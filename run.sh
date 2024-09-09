@@ -47,6 +47,12 @@ cp client/Dockerfile Social-Media-Web-App-Mern-Stack-/client/
 mkdir -p Social-Media-Web-App-Mern-Stack-/server
 cp server/Dockerfile Social-Media-Web-App-Mern-Stack-/server/
 
+# Ensure server files are in the correct location
+if [ ! -f "Social-Media-Web-App-Mern-Stack-/server/package.json" ]; then
+    echo "Error: server/package.json not found. Copying server files..."
+    cp -r Social-Media-Web-App-Mern-Stack-/server/* Social-Media-Web-App-Mern-Stack-/server/
+fi
+
 # Change to the project directory
 cd Social-Media-Web-App-Mern-Stack-
 
