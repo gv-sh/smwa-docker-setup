@@ -6,8 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 
-# Install the missing @mantine/core dependency
-RUN npm install @mantine/core
+# Install all necessary Mantine dependencies
+RUN npm install @mantine/core @mantine/hooks @mantine/form @mantine/notifications @mantine/modals
 
 COPY . .
 

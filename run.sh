@@ -47,6 +47,11 @@ cp client/Dockerfile Social-Media-Web-App-Mern-Stack-/client/
 mkdir -p Social-Media-Web-App-Mern-Stack-/server
 cp server/Dockerfile Social-Media-Web-App-Mern-Stack-/server/
 
+# Update package.json to include Mantine dependencies
+cd Social-Media-Web-App-Mern-Stack-/client
+npm install @mantine/core @mantine/hooks @mantine/form @mantine/notifications @mantine/modals
+cd ../..
+
 # Change to the project directory
 cd Social-Media-Web-App-Mern-Stack-
 
