@@ -10,8 +10,8 @@ This project is a full-stack social media web application built using the MERN s
 
 1. Clone the repository:
    ```
-   git clone https://github.com/Faizan2911/Social-Media-Web-App-Mern-Stack-.git
-   cd Social-Media-Web-App-Mern-Stack-
+   git clone https://github.com/gv-sh/smwa-docker-setup
+   cd smwa-docker-setup
    ```
 
 2. Make the run script executable:
