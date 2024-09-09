@@ -5,17 +5,19 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+    image: smwa-frontend:latest
     ports:
       - "3000:3000"
     depends_on:
       - backend
     environment:
-      - REACT_APP_API_URL=http://localhost:5000
+      - REACT_APP_API_URL=http://3.92.147.183:5000
 
   backend:
     build:
       context: ./server
       dockerfile: Dockerfile
+    image: smwa-backend:latest
     ports:
       - "5000:5000"
     depends_on:
