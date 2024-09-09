@@ -47,18 +47,6 @@ cp client/Dockerfile Social-Media-Web-App-Mern-Stack-/client/
 mkdir -p Social-Media-Web-App-Mern-Stack-/server
 cp server/Dockerfile Social-Media-Web-App-Mern-Stack-/server/
 
-# Ensure package.json exists in the client directory
-if [ ! -f "Social-Media-Web-App-Mern-Stack-/client/package.json" ]; then
-    echo "Error: package.json not found in the client directory."
-    echo "Please make sure the original repository contains a valid package.json file."
-    exit 1
-fi
-
-# Update package.json to include Mantine dependencies
-cd Social-Media-Web-App-Mern-Stack-/client
-npm install @mantine/core @mantine/hooks @mantine/form @mantine/notifications @mantine/modals
-cd ../..
-
 # Change to the project directory
 cd Social-Media-Web-App-Mern-Stack-
 
