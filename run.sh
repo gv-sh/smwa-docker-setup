@@ -66,7 +66,8 @@ if [ ! -f ssl/fullchain.pem ] || [ ! -f ssl/privkey.pem ]; then
 fi
 
 # Build and run Docker containers
-docker-compose up -d --build
+docker-compose build --no-cache
+docker-compose up -d
 
 # Wait for containers to start
 echo "Waiting for containers to start..."
