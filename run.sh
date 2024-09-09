@@ -29,6 +29,10 @@ if ! command_exists docker-compose; then
     echo "Docker Compose installed successfully."
 fi
 
+# Prompt for public IP or domain name
+read -p "Enter your EC2 instance's public IP or domain name (leave blank for localhost): " PUBLIC_IP
+PUBLIC_IP=${PUBLIC_IP:-localhost}
+
 # Clone the original repository if it doesn't exist
 if [ ! -d "Social-Media-Web-App-Mern-Stack-" ]; then
     echo "Cloning the original Social Media Web App repository..."
@@ -42,13 +46,19 @@ fi
 # Change to the project directory
 cd Social-Media-Web-App-Mern-Stack-
 
+# Update nginx.conf with the public IP
+sed -i "s/server_name localhost;/server_name $PUBLIC_IP;/g" nginx.conf
+
+# Update docker-compose.yml with the public IP
+sed -i "s|REACT_APP_API_URL=http://localhost:5000|REACT_APP_API_URL=http://$PUBLIC_IP:5000|g" docker-compose.yml
+
 # Create SSL directory if it doesn't exist
 mkdir -p ssl
 
 # Generate self-signed SSL certificate if it doesn't exist
 if [ ! -f ssl/fullchain.pem ] || [ ! -f ssl/privkey.pem ]; then
     echo "Generating self-signed SSL certificate..."
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl/privkey.pem -out ssl/fullchain.pem -subj "/C=US/ST=State/L=City/O=Organization/CN=localhost"
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl/privkey.pem -out ssl/fullchain.pem -subj "/C=US/ST=State/L=City/O=Organization/CN=$PUBLIC_IP"
 fi
 
 # Build and run Docker containers
@@ -61,5 +71,5 @@ sleep 30
 # Print container status
 docker-compose ps
 
-echo "Project is now running. Access the frontend at https://localhost"
-echo "Access Mongo Express at http://localhost:8081"
+echo "Project is now running. Access the frontend at https://$PUBLIC_IP"
+echo "Access Mongo Express at http://$PUBLIC_IP:8081"
