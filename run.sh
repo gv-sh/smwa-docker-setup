@@ -29,6 +29,19 @@ if ! command_exists docker-compose; then
     echo "Docker Compose installed successfully."
 fi
 
+# Clone the original repository if it doesn't exist
+if [ ! -d "Social-Media-Web-App-Mern-Stack-" ]; then
+    echo "Cloning the original Social Media Web App repository..."
+    git clone https://github.com/Faizan2911/Social-Media-Web-App-Mern-Stack-.git
+    cp docker-compose.yml Social-Media-Web-App-Mern-Stack-/
+    cp nginx.conf Social-Media-Web-App-Mern-Stack-/
+    cp client/Dockerfile Social-Media-Web-App-Mern-Stack-/client/
+    cp server/Dockerfile Social-Media-Web-App-Mern-Stack-/server/
+fi
+
+# Change to the project directory
+cd Social-Media-Web-App-Mern-Stack-
+
 # Create SSL directory if it doesn't exist
 mkdir -p ssl
 
