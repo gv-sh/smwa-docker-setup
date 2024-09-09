@@ -37,11 +37,15 @@ PUBLIC_IP=${PUBLIC_IP:-localhost}
 if [ ! -d "Social-Media-Web-App-Mern-Stack-" ]; then
     echo "Cloning the original Social Media Web App repository..."
     git clone https://github.com/Faizan2911/Social-Media-Web-App-Mern-Stack-.git
-    cp docker-compose.yml Social-Media-Web-App-Mern-Stack-/
-    cp nginx.conf Social-Media-Web-App-Mern-Stack-/
-    cp client/Dockerfile Social-Media-Web-App-Mern-Stack-/client/
-    cp server/Dockerfile Social-Media-Web-App-Mern-Stack-/server/
 fi
+
+# Copy Docker-related files to the cloned repository
+cp docker-compose.yml Social-Media-Web-App-Mern-Stack-/
+cp nginx.conf Social-Media-Web-App-Mern-Stack-/
+mkdir -p Social-Media-Web-App-Mern-Stack-/client
+cp client/Dockerfile Social-Media-Web-App-Mern-Stack-/client/
+mkdir -p Social-Media-Web-App-Mern-Stack-/server
+cp server/Dockerfile Social-Media-Web-App-Mern-Stack-/server/
 
 # Change to the project directory
 cd Social-Media-Web-App-Mern-Stack-
