@@ -6,6 +6,9 @@ COPY package*.json ./
 
 RUN npm install
 
+# Install the missing @mantine/core dependency
+RUN npm install @mantine/core
+
 COPY . .
 
 RUN npm run build
