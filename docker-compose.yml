@@ -5,6 +5,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+    image: smwa-frontend:latest
     ports:
       - "3000:3000"
     depends_on:
@@ -16,6 +17,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
+    image: smwa-backend:latest
     ports:
       - "5000:5000"
     depends_on:
