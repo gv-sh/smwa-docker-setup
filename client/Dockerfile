@@ -11,9 +11,6 @@ RUN npm install
 # Install missing Mantine dependencies
 RUN npm install @mantine/core @mantine/hooks @mantine/form @mantine/notifications
 
-# Update browserslist database
-RUN npx update-browserslist-db@latest
-
 # Copy the rest of the application code
 COPY . .
 

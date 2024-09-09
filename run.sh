@@ -78,3 +78,10 @@ docker-compose ps
 
 echo "Project is now running. Access the frontend at https://$PUBLIC_IP"
 echo "Access Mongo Express at http://$PUBLIC_IP:8081"
+
+# Print logs for troubleshooting
+echo "Frontend logs:"
+docker-compose logs frontend
+
+echo "Backend logs:"
+docker-compose logs backend
